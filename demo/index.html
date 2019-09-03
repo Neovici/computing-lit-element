@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="utf-8">
+	<style>
+		body {
+			background: #fafafa;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="demo"></div>
+
+	<script type="module">
+		import { render } from 'lit-html';
+		import { ComputingLitElement, html } from '../computing-lit-element.js';
+		render(
+			html`
+				<computing-demo-element>
+					some more light-dom
+				</computing-demo-element>
+			`,
+			document.querySelector('#demo')
+		);
+
+		class ComputingDemoElement extends ComputingLitElement {
+			static get properties() {
+				return {
+					prop1: { type: Number },
+					prop2: { type: Number },
+					comp6: { type: Number, computed: '_computeComp3(comp2)' },
+					comp5: { type: Number, computed: '_computeComp3(comp2, comp4)' },
+					comp4: { type: Number, computed: '_computeComp3(comp2, comp5)' },
+					comp3: { type: Number, computed: '_computeComp3(comp2, prop2)' },
+					comp: { type: Number, computed: '_computeComp2(prop1, prop1)' },
+					comp2: { type: Number, computed: '_computeComp2(prop1, comp)' }
+				};
+			}
+			constructor() {
+				super();
+				this.prop1 = 0;
+				this.prop2 = 0;
+			}
+			render() {
+				return html`
+					<style>button:focus { background-color: aliceblue; }</style>
+
+					<p>prop1: ${this.prop1}</p>
+					<p>prop2: ${this.prop2}</p>
+					<p>comp: ${this.comp}</p>
+					<p>comp2: ${this.comp2}</p>
+					<p>comp3: ${this.comp3}</p>
+					<p>comp4: ${this.comp4}</p>
+					<p>comp5: ${this.comp5}</p>
+					<p>comp6: ${this.comp6}</p>
+
+					<button id="a" @click="${() => this.prop1 = Math.random()}">prop1</button>
+					<button id="b" @click="${() => this.prop2 = Math.random()}">prop2</button>
+				`;
+			}
+			_computeComp(prop1, prop2) {
+				return prop1 + prop2;
+			}
+
+			_computeComp2(prop1, comp) {
+				return prop1 * comp;
+			}
+
+			_computeComp3(prop1, comp) {
+				console.log(prop1, comp);
+				return prop1 - (comp || 0);
+			}
+		}
+		customElements.define('computing-demo-element', ComputingDemoElement);
+
+	</script>
+</body>
+
+</html>

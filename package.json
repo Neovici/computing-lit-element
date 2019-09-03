@@ -4,7 +4,10 @@
   "description": "Add computed properties to LitElement",
   "author": "computing-lit-element",
   "license": "Apache-2.0",
-  "repository": "github:Neovici/computing-lit-element",
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/neovici/computing-lit-element.git"
+	},
   "main": "index.js",
   "module": "index.js",
   "scripts": {

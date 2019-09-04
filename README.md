@@ -10,7 +10,7 @@ npm i computing-lit-element
 ## Usage
 ```html
 <script type="module">
-  import ComputingLitElement from 'computing-lit-element.js';
+  import ComputingLitElement from 'computing-lit-element';
   
   class MyElement extends ComputingLitElement {
   	static get properties() {
@@ -37,6 +37,15 @@ npm i computing-lit-element
     }
   }
 </script>
+```
+##### Or use the mixin
+```
+<script type="module">
+  import computingMixin from 'computing-lit-element';
+  import { LitElement } from 'lit-element';
+  
+  const ComputingLitElement = computingMixin(LitElement);
+  ...
 ```
 
 ## Testing using karma (if applied by author)

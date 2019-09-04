@@ -1,5 +1,5 @@
 {
-  "name": "computing-lit-element",
+  "name": "@neovici/computing-lit-element",
   "version": "0.1.0",
   "description": "Add computed properties to LitElement",
   "author": "computing-lit-element",

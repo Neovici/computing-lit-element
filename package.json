@@ -2,12 +2,13 @@
   "name": "@neovici/computing-lit-element",
   "version": "0.1.0",
   "description": "Add computed properties to LitElement",
-  "author": "computing-lit-element",
+  "author": "Neovici",
+  "homepage": "https://github.com/Neovici/computing-lit-element#readme",
   "license": "Apache-2.0",
   "repository": {
-		"type": "git",
-		"url": "git+https://github.com/neovici/computing-lit-element.git"
-	},
+    "type": "git",
+    "url": "git+https://github.com/Neovici/computing-lit-element.git"
+  },
   "main": "index.js",
   "module": "index.js",
   "scripts": {
@@ -36,17 +37,17 @@
   },
   "devDependencies": {
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
-    "es-dev-server": "^1.5.0",
-    "eslint": "^6.1.0",
+    "@open-wc/demoing-storybook": "^0.3.0",
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
-    "husky": "^1.0.0",
-    "lint-staged": "^8.0.0",
-    "@open-wc/testing-karma": "^3.0.0",
-    "webpack-merge": "^4.1.5",
-    "@open-wc/testing-karma-bs": "^1.0.0",
     "@open-wc/testing": "^2.0.0",
-    "@open-wc/demoing-storybook": "^0.3.0"
+    "@open-wc/testing-karma": "^3.0.0",
+    "@open-wc/testing-karma-bs": "^1.0.0",
+    "es-dev-server": "^1.5.0",
+    "eslint": "^6.1.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.0.0",
+    "webpack-merge": "^4.1.5"
   },
   "eslintConfig": {
     "extends": [

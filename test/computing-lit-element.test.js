@@ -1,5 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
-
+/* global describe, it */
+import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 import { ComputingLitElement } from '../computing-lit-element.js';
 
 class ComputingLitElementTester extends ComputingLitElement {
@@ -17,11 +17,13 @@ class ComputingLitElementTester extends ComputingLitElement {
 			}
 		};
 	}
+
 	constructor() {
 		super();
 		this.prop1 = 2;
 		this.prop2 = 10;
 	}
+
 	_computeComputedProp1(prop1, prop2) {
 		return prop1 * prop2;
 	}
@@ -29,22 +31,20 @@ class ComputingLitElementTester extends ComputingLitElement {
 
 customElements.define('computing-lit-element-tester', ComputingLitElementTester);
 
-
 describe('ComputingLitElement', () => {
-
 	it('computes computedProp1 after prop1 is updated', async () => {
 		const el = await fixture(html`
 			<computing-lit-element-tester></computing-lit-element-tester>
 		`);
 		expect(el.computedProp1).to.equal(20);
 		el.prop1 = 5;
-		el.performUpdate();
+		await elementUpdated(el);
 		expect(el.computedProp1).to.equal(50);
 	});
-/*
+	/*
 	it('has a default title "Hey there" and counter 5', async () => {
 		const el = await fixture(html`
-	  <computing-lit-element></computing-lit-element>
+		<computing-lit-element></computing-lit-element>
 		`);
 
 		expect(el.title).to.equal('Hey there');
@@ -53,18 +53,18 @@ describe('ComputingLitElement', () => {
 
 	it('shows initially the text "hey there Nr. 5!" and an "increment" button', async () => {
 		const el = await fixture(html`
-	  <computing-lit-element></computing-lit-element>
+		<computing-lit-element></computing-lit-element>
 	`);
 
 		expect(el).shadowDom.to.equal(`
-	  <h2>Hey there Nr. 5!</h2>
-	  <button>increment</button>
+		<h2>Hey there Nr. 5!</h2>
+		<button>increment</button>
 	`);
 	});
 
 	it('increases the counter on button click', async () => {
 		const el = await fixture(html`
-	  <computing-lit-element></computing-lit-element>
+		<computing-lit-element></computing-lit-element>
 	`);
 		el.shadowRoot.querySelector('button').click();
 
@@ -73,7 +73,7 @@ describe('ComputingLitElement', () => {
 
 	it('can override the title via attribute', async () => {
 		const el = await fixture(html`
-	  <computing-lit-element title="attribute title"></computing-lit-element>
+		<computing-lit-element title="attribute title"></computing-lit-element>
 	`);
 
 		expect(el.title).to.equal('attribute title');

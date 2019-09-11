@@ -42,6 +42,8 @@
 				super();
 				this.prop1 = 0;
 				this.prop2 = 0;
+				this._boundClickHandler1 = this._clickHandler1.bind(this);
+				this._boundClickHandler2 = this._clickHandler2.bind(this);
 			}
 			render() {
 				return html`
@@ -56,8 +58,8 @@
 					<p>comp5: ${this.comp5}</p>
 					<p>comp6: ${this.comp6}</p>
 
-					<button id="a" @click="${() => this.prop1 = Math.random()}">prop1</button>
-					<button id="b" @click="${() => this.prop2 = Math.random()}">prop2</button>
+					<button id="a" @click="${this._boundClickHandler1}">prop1</button>
+					<button id="b" @click="${this._boundClickHandler2}">prop2</button>
 				`;
 			}
 			_computeComp(prop1, prop2) {
@@ -69,8 +71,15 @@
 			}
 
 			_computeComp3(prop1, comp) {
-				console.log(prop1, comp);
 				return prop1 - (comp || 0);
+			}
+
+			_clickHandler1() {
+				this.prop1 = Math.random();
+			}
+
+			_clickHandler2() {
+				this.prop2 = Math.random();
 			}
 		}
 		customElements.define('computing-demo-element', ComputingDemoElement);

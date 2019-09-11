@@ -16,20 +16,15 @@
     "start:compatibility": "es-dev-server --app-index demo/index.html --compatibility all --node-resolve --open --watch",
     "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
-    "format": "npm run format:eslint && npm run format:prettier",
+    "lint": "npm run lint:eslint",
+    "format": "npm run format:eslint",
     "test": "karma start --coverage",
     "test:watch": "karma start --auto-watch=true --single-run=false",
     "test:update-snapshots": "karma start --update-snapshots",
     "test:prune-snapshots": "karma start --prune-snapshots",
     "test:compatibility": "karma start --compatibility all --coverage",
     "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
-    "test:bs": "karma start karma.bs.config.js --compatibility all --coverage",
-    "site:build": "npm run storybook:build",
-    "storybook": "start-storybook -p 9001",
-    "storybook:build": "build-storybook -o _site -s storybook-static"
+    "test:bs": "karma start karma.bs.config.js --compatibility all --coverage"
   },
   "dependencies": {
     "lit-html": "^1.0.0",
@@ -37,25 +32,24 @@
   },
   "devDependencies": {
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
-    "@open-wc/demoing-storybook": "^0.3.0",
-    "@open-wc/eslint-config": "^1.0.0",
-    "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.0.0",
     "@open-wc/testing-karma": "^3.0.0",
     "@open-wc/testing-karma-bs": "^1.0.0",
+    "babel-eslint": "^10.0.3",
     "es-dev-server": "^1.5.0",
     "eslint": "^6.1.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "husky": "^1.3.1",
+    "karma-firefox-launcher": "^1.2.0",
     "lint-staged": "^8.0.0",
     "webpack-merge": "^4.1.5"
   },
   "eslintConfig": {
     "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
+      "@neovici/eslint-config"
     ]
   },
-  "prettier": "@open-wc/prettier-config",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -64,7 +58,6 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "prettier --write",
       "git add"
     ]
   }

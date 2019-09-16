@@ -1,6 +1,6 @@
 {
   "name": "@neovici/computing-lit-element",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Add computed properties to LitElement",
   "author": "Neovici",
   "homepage": "https://github.com/Neovici/computing-lit-element#readme",

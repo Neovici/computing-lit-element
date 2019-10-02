@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
-    "@open-wc/testing": "^2.0.0",
+    "@open-wc/testing": "^2.3.4",
     "@open-wc/testing-karma": "^3.0.0",
     "@open-wc/testing-karma-bs": "^1.0.0",
     "babel-eslint": "^10.0.3",

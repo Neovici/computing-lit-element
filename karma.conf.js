@@ -39,6 +39,11 @@ module.exports = config => {
 				// npm run test -- --grep test/bar/*
 				{ pattern: config.grep ? config.grep : 'test/**/*.test.js', type: 'module' }
 			],
+			coverageIstanbulReporter: {
+				thresholds: {
+					emitWarning: true // set to `true` to not fail the test command when thresholds are not met
+				}
+			},
 
 			esm: {
 				nodeResolve: true

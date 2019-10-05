@@ -26,34 +26,61 @@
     "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
     "test:bs": "karma start karma.bs.config.js --compatibility all --coverage"
   },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "branch": "master"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "lit-html": "^1.0.0",
     "lit-element": "^2.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
+    "@neovici/github-actions-eslint-annotator": "^0.2.0",
     "@open-wc/testing": "^2.3.4",
     "@open-wc/testing-karma": "^3.1.38",
     "@open-wc/testing-karma-bs": "^1.1.63",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
     "babel-eslint": "^10.0.3",
-    "es-dev-server": "^1.5.0",
+    "es-dev-server": "^1.18.3",
     "eslint": "^6.5.1",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "husky": "^1.3.1",
     "karma-firefox-launcher": "^1.2.0",
+    "karma-sauce-launcher": "^2.0.2",
     "lint-staged": "^8.0.0",
+    "semantic-release": "^16.0.0-beta.25",
     "webpack-merge": "^4.1.5"
   },
   "eslintConfig": {
     "extends": [
       "@neovici/eslint-config"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.js": [

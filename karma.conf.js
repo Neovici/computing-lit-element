@@ -1,17 +1,36 @@
+/* eslint-disable no-console */
 /* eslint-env node */
-const { createDefaultConfig } = require('@open-wc/testing-karma');
-const merge = require('webpack-merge');
+const { createDefaultConfig } = require('@open-wc/testing-karma'),
+	merge = require('webpack-merge'),
+	baseCustomLaunchers = {
+		FirefoxHeadless: {
+			base: 'Firefox',
+			flags: ['-headless']
+		}
+	},
+	sauceCustomLaunchers = {
+		slChrome: {
+			base: 'SauceLabs',
+			browserName: 'chrome',
+			browserVersion: 'beta',
+			platformName: 'Windows 10'
+		}
+	},
+	allCustomLaunchers = { ...baseCustomLaunchers, ...sauceCustomLaunchers};
 
 module.exports = config => {
+
+	const useSauce = process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY,
+		customLaunchers = useSauce ? allCustomLaunchers : baseCustomLaunchers;
+
+	if (!useSauce) {
+		console.warn('Missing SAUCE_USERNAME/SAUCE_ACCESS_KEY, skipping sauce.');
+	}
+
 	config.set(
 		merge(createDefaultConfig(config), {
-			browsers: ['FirefoxHeadless'],
-			customLaunchers: {
-				FirefoxHeadless: {
-					base: 'Firefox',
-					flags: ['-headless']
-				}
-			},
+			browsers: Object.keys(customLaunchers),
+			customLaunchers,
 			files: [
 				// runs all files ending with .test in the test folder,
 				// can be overwritten by passing a --grep flag. examples:
@@ -23,7 +42,12 @@ module.exports = config => {
 
 			esm: {
 				nodeResolve: true
-			}
+			},
+			sauceLabs: {
+				testName: 'Web App Unit Tests'
+			},
+			reporters: ['dots', 'saucelabs'],
+			singleRun: true
 			// you can overwrite/extend the config further
 		}),
 	);

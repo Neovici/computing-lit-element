@@ -1,3 +1,10 @@
+[![Build Status](https://github.com/Neovici/computing-lit-element/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/computing-lit-element/actions?workflow=Github+CI)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/nomego)](https://saucelabs.com/u/nomego)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1e479d11b9dfd4af5331/maintainability)](https://codeclimate.com/github/Neovici/computing-lit-element/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1e479d11b9dfd4af5331/test_coverage)](https://codeclimate.com/github/Neovici/computing-lit-element/test_coverage)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/computing-lit-element)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 # \<computing-lit-element>
 ##### Adds computed properties functionality to LitElement.<p>
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.

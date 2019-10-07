@@ -4,6 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1e479d11b9dfd4af5331/test_coverage)](https://codeclimate.com/github/Neovici/computing-lit-element/test_coverage)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/computing-lit-element)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Depfu](https://badges.depfu.com/badges/3d9fdd93d2fed32ed7b0233a694a2b42/count.svg)](https://depfu.com/github/Neovici/computing-lit-element?project_id=9625)
 
 # \<computing-lit-element>
 ##### Adds computed properties functionality to LitElement.<p>

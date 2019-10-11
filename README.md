@@ -1,5 +1,4 @@
 [![Build Status](https://github.com/Neovici/computing-lit-element/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/computing-lit-element/actions?workflow=Github+CI)
-[![Sauce Test Status](https://saucelabs.com/buildstatus/nomego)](https://saucelabs.com/u/nomego)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1e479d11b9dfd4af5331/maintainability)](https://codeclimate.com/github/Neovici/computing-lit-element/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1e479d11b9dfd4af5331/test_coverage)](https://codeclimate.com/github/Neovici/computing-lit-element/test_coverage)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/computing-lit-element)

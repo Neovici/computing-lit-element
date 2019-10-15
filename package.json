@@ -59,7 +59,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
-    "@neovici/github-actions-eslint-annotator": "^0.2.0",
+    "@neovici/github-actions-eslint-annotator": "^0.3.0",
     "@open-wc/testing": "^2.3.4",
     "@open-wc/testing-karma": "^3.1.38",
     "@open-wc/testing-karma-bs": "^1.1.63",

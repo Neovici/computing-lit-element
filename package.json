@@ -62,7 +62,7 @@
     "@neovici/github-actions-eslint-annotator": "^0.3.0",
     "@open-wc/testing": "^2.3.5",
     "@open-wc/testing-karma": "^3.1.40",
-    "@open-wc/testing-karma-bs": "^1.2.0",
+    "@open-wc/testing-karma-bs": "^1.2.1",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.16",
     "babel-eslint": "^10.0.3",

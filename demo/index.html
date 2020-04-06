@@ -31,7 +31,7 @@
 					prop1: { type: Number },
 					prop2: { type: Number },
 					comp6: { type: Number, computed: '_computeComp3(comp2)' },
-					comp5: { type: Number, computed: '_computeComp3(comp2, comp4)' },
+					comp5: { type: Number, computed: '_computeComp3(comp2, comp3)' },
 					comp4: { type: Number, computed: '_computeComp3(comp2, comp5)' },
 					comp3: { type: Number, computed: '_computeComp3(comp2, prop2)' },
 					comp: { type: Number, computed: '_computeComp2(prop1, prop1)' },
@@ -82,7 +82,15 @@
 				this.prop2 = Math.random();
 			}
 		}
-		customElements.define('computing-demo-element', ComputingDemoElement);
+		class ComputingDemoElement2 extends ComputingDemoElement {
+			static get properties() {
+				return {
+					prop3: { type: Number },
+				};
+			}
+		}
+
+		customElements.define('computing-demo-element', ComputingDemoElement2);
 
 	</script>
 </body>

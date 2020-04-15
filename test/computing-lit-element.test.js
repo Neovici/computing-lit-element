@@ -1,5 +1,7 @@
 /* global describe, it */
-import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
+import {
+	html, fixture, expect, elementUpdated
+} from '@open-wc/testing';
 import { ComputingLitElement } from '../computing-lit-element.js';
 
 class ComputingLitElementTester extends ComputingLitElement {
@@ -10,6 +12,10 @@ class ComputingLitElementTester extends ComputingLitElement {
 			},
 			prop2: {
 				type: Number
+			},
+			dependentComputedProp: {
+				type: Number,
+				computed: '_computeComputedProp1(prop1, computedProp1)'
 			},
 			computedProp1: {
 				type: Number,
@@ -31,52 +37,53 @@ class ComputingLitElementTester extends ComputingLitElement {
 
 customElements.define('computing-lit-element-tester', ComputingLitElementTester);
 
+class MoreAdvancedComputingLitElementTester extends ComputingLitElementTester {
+	static get properties() {
+		return {
+			computedProp2: {
+				type: Number,
+				computed: '_computeComputedProp1(prop2, computedProp1)'
+			}
+		};
+	}
+}
+
+customElements.define('more-advanced-computing-lit-element-tester', MoreAdvancedComputingLitElementTester);
+
 describe('ComputingLitElement', () => {
 	it('computes computedProp1 after prop1 is updated', async () => {
 		const el = await fixture(html`
 			<computing-lit-element-tester></computing-lit-element-tester>
 		`);
+
 		expect(el.computedProp1).to.equal(20);
+
 		el.prop1 = 5;
 		await elementUpdated(el);
 		expect(el.computedProp1).to.equal(50);
 	});
-	/*
-	it('has a default title "Hey there" and counter 5', async () => {
+
+	it('computes props in the correct order (dependencies first)', async () => {
 		const el = await fixture(html`
-		<computing-lit-element></computing-lit-element>
+			<computing-lit-element-tester></computing-lit-element-tester>
 		`);
 
-		expect(el.title).to.equal('Hey there');
-		expect(el.counter).to.equal(5);
+		expect(el.dependentComputedProp).to.equal(40);
+
+		el.prop1 = 5;
+		await elementUpdated(el);
+		expect(el.dependentComputedProp).to.equal(250);
 	});
 
-	it('shows initially the text "hey there Nr. 5!" and an "increment" button', async () => {
+	it('handles inherited computed props', async () => {
 		const el = await fixture(html`
-		<computing-lit-element></computing-lit-element>
-	`);
+			<more-advanced-computing-lit-element-tester></more-advanced-computing-lit-element-tester>
+		`);
 
-		expect(el).shadowDom.to.equal(`
-		<h2>Hey there Nr. 5!</h2>
-		<button>increment</button>
-	`);
+		expect(el.computedProp2).to.equal(200);
+
+		el.prop1 = 5;
+		await elementUpdated(el);
+		expect(el.computedProp2).to.equal(500);
 	});
-
-	it('increases the counter on button click', async () => {
-		const el = await fixture(html`
-		<computing-lit-element></computing-lit-element>
-	`);
-		el.shadowRoot.querySelector('button').click();
-
-		expect(el.counter).to.equal(6);
-	});
-
-	it('can override the title via attribute', async () => {
-		const el = await fixture(html`
-		<computing-lit-element title="attribute title"></computing-lit-element>
-	`);
-
-		expect(el.title).to.equal('attribute title');
-	});
-*/
 });

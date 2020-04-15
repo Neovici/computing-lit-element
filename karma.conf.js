@@ -16,7 +16,10 @@ const { createDefaultConfig } = require('@open-wc/testing-karma'),
 			platformName: 'Windows 10'
 		}
 	},
-	allCustomLaunchers = { ...baseCustomLaunchers, ...sauceCustomLaunchers};
+	allCustomLaunchers = {
+		...baseCustomLaunchers,
+		...sauceCustomLaunchers
+	};
 
 module.exports = config => {
 
@@ -37,7 +40,10 @@ module.exports = config => {
 				//
 				// npm run test -- --grep test/foo/bar.test.js
 				// npm run test -- --grep test/bar/*
-				{ pattern: config.grep ? config.grep : 'test/**/*.test.js', type: 'module' }
+				{
+					pattern: config.grep ? config.grep : 'test/**/*.test.js',
+					type: 'module'
+				}
 			],
 			coverageIstanbulReporter: {
 				thresholds: {
@@ -54,7 +60,7 @@ module.exports = config => {
 			reporters: ['dots', 'saucelabs'],
 			singleRun: true
 			// you can overwrite/extend the config further
-		}),
+		})
 	);
 	return config;
 };
